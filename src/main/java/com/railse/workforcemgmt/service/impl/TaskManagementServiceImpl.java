@@ -160,23 +160,6 @@ public class TaskManagementServiceImpl implements TaskManagementService {
     }
 
     @Override
-    public TaskManagementDto updateTaskPriority(Long taskId, Priority priority) {
-        TaskManagement task = taskRepository.findById(taskId)
-                .orElseThrow(() -> new ResourceNotFoundException("Task not found with id: " + taskId));
-
-        task.setPriority(priority);
-        taskRepository.save(task);
-
-        return taskMapper.modelToDto(task);
-    }
-
-    @Override
-    public List<TaskManagementDto> getTasksByPriority(Priority priority) {
-        List<TaskManagement> tasks = taskRepository.findByPriority(priority);
-        return taskMapper.modelListToDtoList(tasks);
-    }
-
-    @Override
     public List<TaskManagementDto> fetchSmartTasksByDate(TaskFetchByDateRequest request) {
         List<TaskManagement> allTasks = taskRepository.findByAssigneeIdIn(request.getAssigneeIds());
 
@@ -199,6 +182,25 @@ public class TaskManagementServiceImpl implements TaskManagementService {
 
         return taskMapper.modelListToDtoList(filtered);
     }
+
+    @Override
+    public TaskManagementDto updateTaskPriority(Long taskId, Priority priority) {
+        TaskManagement task = taskRepository.findById(taskId)
+                .orElseThrow(() -> new ResourceNotFoundException("Task not found with id: " + taskId));
+
+        task.setPriority(priority);
+        taskRepository.save(task);
+
+        return taskMapper.modelToDto(task);
+    }
+
+    @Override
+    public List<TaskManagementDto> getTasksByPriority(Priority priority) {
+        List<TaskManagement> tasks = taskRepository.findByPriority(priority);
+        return taskMapper.modelListToDtoList(tasks);
+    }
+
+
 
     @Override
     public TaskDetailsDto findTaskDetailsById(Long id) {

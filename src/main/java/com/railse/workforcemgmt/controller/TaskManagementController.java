@@ -55,6 +55,11 @@ public class TaskManagementController {
         return new Response<>(taskManagementService.fetchTasksByDate(request));
     }
 
+    @PostMapping("/smart-fetch-by-date")
+    public Response<List<TaskManagementDto>> fetchSmartByDate(@RequestBody TaskFetchByDateRequest request) {
+        return new Response<>(taskManagementService.fetchSmartTasksByDate(request));
+    }
+
     @PostMapping("/update-priority")
     public Response<TaskManagementDto> updateTaskPriority(@RequestParam Long taskId, @RequestParam Priority priority) {
         return new Response<>(taskManagementService.updateTaskPriority(taskId, priority));
@@ -63,11 +68,6 @@ public class TaskManagementController {
     @GetMapping("/by-priority")
     public Response<List<TaskManagementDto>> getTasksByPriority(@RequestParam Priority priority) {
         return new Response<>(taskManagementService.getTasksByPriority(priority));
-    }
-
-    @PostMapping("/smart-fetch-by-date")
-    public Response<List<TaskManagementDto>> fetchSmartByDate(@RequestBody TaskFetchByDateRequest request) {
-        return new Response<>(taskManagementService.fetchSmartTasksByDate(request));
     }
 
     @GetMapping("/details/{id}")

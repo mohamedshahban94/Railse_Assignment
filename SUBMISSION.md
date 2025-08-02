@@ -1,6 +1,5 @@
 ### 1. Link to your Public GitHub Repository
-[Your GitHub Repository URL Here]
+https://github.com/mohamedshahban94/Railse_Assignment.git
 
 ### 2. Link to your Video Demonstration
-(Please ensure the link is publicly accessible)
-[Your Google Drive, Loom, or YouTube Link Here]
+https://drive.google.com/drive/folders/1ISe3ALM9-pNTQqavOvrquZa5a7cnh1ZC?usp=sharing
